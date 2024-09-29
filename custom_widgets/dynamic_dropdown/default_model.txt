@@ -1,0 +1,17 @@
+{{
+{
+  "dynamic_options": {
+    "options": [
+       "Option 1",
+       "Option 2",
+       "Option 3",
+       "Option 4",
+       "Option 5",
+    ]
+  },
+	"header": "Dynamic Dropdown",
+	"description": "Magic dropdown",
+  "value": appsmith.store.variablewitharray
+}
+
+}}

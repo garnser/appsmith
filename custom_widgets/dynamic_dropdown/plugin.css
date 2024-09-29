@@ -1,0 +1,205 @@
+/* Container Styling */
+.custom-multiselect-container {
+  position: relative;
+  width: 100%;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  border: none; /* Ensure there's no border */
+  box-shadow: none; /* Ensure no shadow */
+  padding: 10px; /* Add 10px padding inside the widget */
+  box-sizing: border-box; /* Include padding in width calculation */
+}
+
+/* Selected Tags (pill-shaped with border, no background fill) */
+.selected-tags {
+  position: sticky; /* Keeps the selected tags fixed at the top during scrolling */
+  top: 6px; /* Adjust based on the height of the header */
+  background-color: #fff; /* White background to blend with the dropdown */
+  z-index: 9; /* Ensures it stays above other elements but below the dropdown */
+  display: flex;
+  flex-wrap: wrap;
+  padding: 4px; /* Increased padding for better spacing */
+  border: 1px solid #d9d9d9; /* All-around light gray border */
+  border-radius: 8px; /* Rounded corners for a smoother look */
+  box-sizing: border-box; /* Includes padding and border in the element's total width and height */
+  cursor: pointer; /* Changes cursor to pointer to indicate interactivity */
+  position: relative; /* Ensures that the ::after pseudo-element is positioned correctly */
+}
+
+/* Add a down arrow to indicate a dropdown */
+.selected-tags::after {
+  content: '⌄'; /* Unicode down arrow */
+  position: absolute;
+  right: 10px;
+  font-size: 14px;
+  color: #888; /* Light gray color */
+  pointer-events: none; /* Prevent interaction */
+  display: flex;
+  align-items: center;
+}
+
+/* Pill-style tag with border only (less rounded corners) */
+.selected-tag {
+  background-color: transparent; /* No background */
+  border: 1px solid #e9e9e9; /* Border only */
+  border-radius: 6px; /* Less rounded corners */
+  padding: 4px 10px; /* Slightly smaller padding */
+  margin-right: 6px;
+  display: flex;
+  align-items: center;
+  font-size: 12px; /* Decrease font size */
+  color: #333;
+  white-space: nowrap;
+}
+
+/* Close button in the tag */
+.remove-tag {
+  margin-left: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  color: #999;
+  font-size: 12px; /* Decrease font size */
+}
+
+/* Input field for new options */
+.select-input {
+  border: none;
+  flex: 1;
+  min-width: 100px;
+  font-size: 12px; /* Decrease font size */
+  outline: none;
+}
+
+/* Dropdown Container */
+.dropdown {
+  position: absolute;
+  top: 100%; /* Positions the dropdown directly below .selected-tags */
+  left: 0;
+  right: 0;
+  max-width: 100%; /* Ensures it doesn't exceed the container's width */
+  overflow-y: auto; /* Enables vertical scrolling if content overflows */
+  overflow-x: hidden; /* Prevents horizontal scrolling */
+  border: 1px solid #d9d9d9; /* All-around border */
+  background-color: #fff; /* White background for consistency */
+  z-index: 10000; /* Increased z-index to ensure it appears above other elements */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow for depth */
+  border-radius: 0 0 8px 8px; /* Rounds the bottom corners to match .selected-tags */
+  box-sizing: border-box;
+  margin-top: 2px; /* Slight spacing to avoid overlap */
+}
+
+/* Dropdown Item Styling */
+.dropdown-item {
+  display: flex;
+  align-items: center;
+  padding: 10px 16px;
+  cursor: pointer;
+  font-size: 12px; /* Decrease font size */
+}
+
+/* Custom square checkbox with rounded corners */
+.dropdown-item input[type="checkbox"] {
+  margin-right: 12px;
+  width: 18px;
+  height: 18px;
+  appearance: none; /* Remove default checkbox */
+  border: 2px solid #d9d9d9; /* Light gray border when unchecked */
+  border-radius: 6px; /* Slightly rounded corners */
+  position: relative;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+/* Checked state for custom checkbox */
+.dropdown-item input[type="checkbox"]:checked {
+  background-color: #553DE9; /* Purple background when selected */
+  border-color: #553DE9; /* Match border with background */
+}
+
+/* Checkmark styling */
+.dropdown-item input[type="checkbox"]:checked:after {
+  content: '✓';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 12px; /* Decrease font size */
+  color: white; /* White checkmark */
+}
+
+/* Hover effect */
+.dropdown-item:hover {
+  background-color: #f5f5f5;
+}
+
+/* Search bar styling */
+.search-bar {
+  position: sticky;
+  top: 0;
+  background-color: #fff; /* Ensure the search bar stays visible when scrolling */
+  z-index: 10; /* Ensure it stays on top of other elements */
+  padding: 8px;
+  border-bottom: 1px solid #d9d9d9;
+  display: flex;
+  align-items: center;
+  font-size: 12px; /* Decrease font size */
+}
+
+/* Styling for the input field within the search bar */
+.search-bar input {
+  width: 100%;
+  padding: 8px 12px;
+  padding-left: 35px; /* Leave space for the icon and padding */
+  border: 2px solid #d9d9d9;
+  border-radius: 6px;
+  outline: none;
+  font-size: 12px; /* Decrease font size */
+  box-sizing: border-box;
+  transition: all 0.3s ease;
+}
+
+/* Hover and focus effects for the search bar */
+.search-bar input:hover,
+.search-bar input:focus {
+  border-color: #553DE9; /* Highlight with purple */
+  box-shadow: 0 0 5px rgba(85, 61, 233, 0.5); /* Purple shadow effect */
+}
+
+/* Search icon (looking glass) positioning */
+.search-bar::before {
+  content: '🔍'; /* You can replace this with a custom icon if needed */
+  position: absolute;
+  left: 10px;
+  font-size: 12px; /* Decrease font size */
+  color: #888; /* Light gray for the icon */
+  pointer-events: none; /* Prevent click on the icon */
+}
+
+/* Scrollbar Styling */
+.dropdown::-webkit-scrollbar {
+  width: 0; /* Remove scrollbar */
+}
+
+/* Scrollbar hidden for all browsers */
+.dropdown {
+  scrollbar-width: none; /* For Firefox */
+  -ms-overflow-style: none; /* For IE and Edge */
+}
+
+.dropdown::-webkit-scrollbar {
+  display: none; /* For Chrome, Safari, and Opera */
+}
+
+.dropdown-header {
+	padding: 5px 0px 10px;
+	position: sticky; /* Ensure the header stays fixed */
+  top: 0; /* Fix it to the top */
+  background-color: #fff; /* Ensure it doesn't overlap with background */
+  z-index: 10; /* Make sure it stays on top of other elements */
+}
+
+.dropdown-description {
+  margin-top: 5px;
+  font-size: 14px;
+  color: #555; /* You can adjust the color and size as needed */
+  line-height: 1.4;
+}
